@@ -12,7 +12,9 @@ fn check_version_compat(version: exapi.Version, minimum: exapi.Version) bool {
 }
 
 pub fn MakeContext(contextInfo: exapi.ContextCreateRequest) exapi.ApiInitError!exapi.Context {
-    if (check_version_compat(contextInfo.version, LATEST_VERSION)) {}
+    if (check_version_compat(contextInfo.version, LATEST_VERSION)) {
+        return exapi.Context{};
+    }
     // check other versions here
     return exapi.ApiInitError.VersionNotSupported;
 }
